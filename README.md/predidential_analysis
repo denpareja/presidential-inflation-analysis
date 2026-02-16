@@ -1,0 +1,59 @@
+# Presidential Approval vs Inflation (USA)
+
+This project explores whether U.S. presidential approval ratings are associated with inflation levels during each president’s term in office.
+
+## Objective
+- Compute the average inflation rate during each president’s time in office
+- Compare it to the president’s average approval rating
+- Quantify the relationship using correlation and linear regression
+
+## Data
+**Input files (local):**
+- `data/raw/approval.csv.csv`  
+  Columns include: president name, dates in office, average approval rating
+- `data/raw/inflation.csv.csv`  
+  Columns include: observation date and annual inflation value (USA)
+
+> Note: The inflation dataset uses the series column name `FPCPITOTLZGUSA`.
+
+## Methodology
+1. Load and clean both datasets (convert approval % to numeric and parse dates).
+2. Parse presidential term ranges (start/end date).
+3. Calculate average inflation between each president’s start and end dates.
+4. Merge into a single table:
+   - `president`
+   - `approval`
+   - `avg_inflation`
+5. Run:
+   - Pearson correlation (r, p-value)
+   - Linear trend visualization (scatter + best-fit line)
+   - Optional OLS regression (statsmodels)
+
+## Key Results (Example Output)
+- Pearson correlation: negative relationship (approval tends to decrease as inflation increases)
+- Example run:
+  - Correlation: -0.483
+  - P-value: 0.0943
+- Interpretation:
+  - The relationship is negative and marginally significant at the 10% level.
+  - Inflation alone explains a limited portion of approval variability; other political/economic factors also matter.
+
+## Files
+- `notebooks/presidents_inflation_analysis.ipynb` — main analysis notebook
+- `data/raw/` — raw datasets
+- `outputs/figures/` — saved charts (optional)
+- `outputs/tables/` — cleaned/merged tables (optional)
+
+## How to Run
+1. Open the notebook in VSCode (Jupyter extension).
+2. Ensure the kernel is Python 3.10+ with required libraries:
+   - pandas, numpy, matplotlib, scipy
+   - (optional) statsmodels
+3. Run the notebook top-to-bottom.
+
+## Tech Stack
+Python, pandas, NumPy, matplotlib, SciPy (optional: statsmodels)
+
+
+Author
+Denisse Pareja - Data Scientist
